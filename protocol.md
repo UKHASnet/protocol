@@ -13,9 +13,6 @@ Bytes are transmitted most significant bit first.
 
 ## Layer 2 (Framing)
 
-Data is transmitted most significant byte first in big-endian (most
-significant bit first).
-
 The low-level framing format consists of:
 
 1. **Preamble** of at least three bytes of `0xAA`.
@@ -75,7 +72,7 @@ The canonical specification of the packet format can be found in the
 
 ### Node IDs
 
-Node IDs consist of up 16 upppercase letters.
+Node IDs consist of up to 16 upppercase letters.
 
 When assigning a new Node ID, check that the ID is not already taken on
 the [node list](https://ukhas.net/nodeList).
