@@ -1,0 +1,49 @@
+digit       = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+integer     = [ "+" | "-" ], digit, { digit };
+decimal     = [ "+" | "-" ], digit, { digit }, [ ".", digit, { digit } ];
+
+lowercase letter = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" |
+                   "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" |
+                   "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" |
+                   "y" | "z";
+
+uppercase letter = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" |
+                   "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" |
+                   "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" |
+                   "Y" | "Z";
+
+letter      = lowercase letter | uppercase letter;
+symbol      = " " | "!" | '"' | "#" | "$" | "%" | "&" | "'" | "(" |
+              ")" | "*" | "+" | "," | "-" | "." | "/" | ":" | ";" |
+              "<" | "=" | ">" | "?" | "@" | "\" | "^" | "_" | "`" |
+              "{" | "|" | "}" | "~";
+
+repeat      = digit;
+sequence    = lowercase letter;
+
+voltage     = "V", [ decimal ], { ",", [ decimal ] };
+current     = "I", [ decimal ], { ",", [ decimal ] };
+temperature = "T", [ decimal ], { ",", [ decimal ] };
+humidity    = "H", [ decimal ], { ",", [ decimal ] };
+pressure    = "P", [ decimal ], { ",", [ decimal ] };
+custom      = "X", [ decimal ], { ",", [ decimal ] };
+sun         = "S", [ decimal ], { ",", [ decimal ] };
+rssi        = "R", [ decimal ], { ",", [ decimal ] };
+count       = "C", [ decimal ], { ",", [ decimal ] };
+windspeed   = "W", [ decimal ], [ ",", [ decimal ] ];
+location    = "L", ( ( [ decimal, ",", decimal ] ) | ","), [ ",", [ decimal ] ];
+zombie      = "Z", ( "0" | "1" );
+
+data field  = voltage | temperature | humidity | pressure | custom | sun |
+              rssi | windspeed | location | count | zombie;
+
+data = { data field };
+
+comment     = ":", { letter | digit | symbol };
+
+node name character = uppercase letter | digit;
+node name   = node name character, { node name character };
+
+path        = "[", node name, { ",", node name }, "]";
+
+packet      = repeat, sequence, data, [ comment ], path;
