@@ -1,70 +1,23 @@
-# Packet Data Types.
+# Packet Data Types
 
-## Lx.x,x.x
-* Location in Signed Decimal Degrees
-* Given as floating-point, eg L51.5,-1.3901
-* Compulsory: At least 2 elements (latitude, longitude)
-* Optional: Upto 3 elements (latitude,longitude,altitude)
+This is a user-friendly summary of the data types used in a UKHAS.net
+packet. The canonical list can be found in the [formal
+grammar](grammar.ebnf).
 
-## Vx.x
-* Voltage in Signed Volts
-* Given as floating-point, eg V3.73
-* Compulsory: At least 1 element
-* Optional: Infinite comma seperated elements
+## List of data types
 
-## Tx.x
-* Temperature in Signed Degrees Celsius
-* Given as floating-point, eg T-8.2
-* Compulsory: At least 1 element
-* Optional: Infinite comma seperated elements
-
-## Hx
-* Relative Humidity in percentage
-* Given as integer, eg H40
-* Compulsory: At least 1 element
-* Optional: Infinite comma seperated elements
-* Note: This is currently handled as floating point in the ukhas.net database
-
-## Px
-* Atmospheric Pressure in Pascals
-* Given as integer, eg P101412
-* Compulsory: At least 1 element
-* Optional: Infinite comma seperated elements
-* Note: This is currently handled as floating point in the ukhas.net database
-
-## Wx,x
-* Wind Speed in m/s, (Optional Bearing in Degrees)
-* Given as integer, eg W15,355
-* Compulsory: 1 element (Wind Speed)
-* Optional: Up to 2 elements (Wind Speed, Wind Bearing)
-
-## Rx
-* Last RSSI in dBmW
-* Given as integer, eg R-88
-* Compulsory: At least 1 element
-* Optional: Infinite comma seperated elements
-* Note: This is currently handled as floating point in the ukhas.net database
-
-## Zx
-* Zombie-mode status
-* Given as integer: '0' means non-zombie (repeater), '1' means zombie
-* Compulsory: Only 1 element
-
-## :xxx
-* Custom message or comment
-* Given as lowercase string, eg :hello
-* All characters permitted except '[', ']' and '|'
-* Note: Not fully supported by the parser, but work is being done on this and irc bot integration (March 2016)
-
-## Cx
-* Count - number of packets rx'd by the node (ensure is unsigned)
-* Compulsory: At least 1 element
-
-## Sx
-* Sun - value from photoresistor
-* Compulsory: At least 1 element
-* Treated as floating-point by the ukhas.net database
-
-## Xx
-* Custom data, not graphed on ukhas.net
-* Compulsory: At least 1 element
+| Type          | Unit           | Letter | Example       | Comment |
+|---------------|----------------|--------|---------------|---------|
+| Voltage       | Volts          | V      | V4.1          |  |
+| Current       | Amperes        | I      | I0.1          |  |
+| Temperature   | Celcius        | T      | T-8.2         | |
+| Relative Humidity | Percent    | H      | H40           | |
+| Atmospheric Pressure | Pascals | P      | P101412       | |
+| Light         | (undefined)    | S      | S12           | |
+| Wind          | m/s, degrees   | W      | W15,355       | One or two elements (speed, bearing) |
+| RSSI          | dBmW           | R      | R-88          | RSSI of last received packet |
+| Zombie        | Boolean        | Z      | Z1            | Whether node is a "Zombie" (not acting as a repeater |
+| Location      | Degrees, meters | L     | L51.5,-1.3901 | Two or three elements (lat, long or lat, long, altitude) |
+| Packet Count  |                | C      | C16           | Number of packets received by node |
+| Comment       |                | :      | :this is a comment | All lowercase characters permitted except '[', ']' and '\|'|
+| Custom        |                | X      | X3,1,23       | Custom data |
