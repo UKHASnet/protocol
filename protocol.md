@@ -29,8 +29,8 @@ No Manchester coding or Data Whitening are used, so the application must ensure
 sufficient bit transitions in the data to retain synchronisation
 
 ### Checksum
-Checksum is CRC16 with a polynominal 0x1021 and starting bits 0x1D0F,
-XORd with 0xFFFF at the end, calculated over the length and data fields.
+Checksum is CRC16 with a polynominal `0x1021` and starting bits `0x1D0F`,
+XORd with `0xFFFF` at the end, calculated over the length and data fields.
 
 ### Example
 
@@ -56,15 +56,16 @@ structured as follows:
     * Subsequent packets should transmit sequential sequence counters
       (`b`, `c`, `d`, ...), wrapping round from `z` to `b`. The sequence
       counter `a` should only be transmitted on node startup.
-3. A number of **Fields**, which consist of a single uppercase letter,
-   followed by a comma-separated list of values. For more information see
-   the [list of fields](fields.md). The data section is variable in length.
+3. A number of **Fields**, which, which the exception of the special
+   comment field, consist of a single uppercase letter, followed by a
+   comma-separated list of values. For more information see the [list of
+   fields](fields.md). The data section is variable in length.
 4. The **Path**, enclosed within `[` and `]`:
     * When broadcasting a new packet, the node should include its node
       ID in the Path (e.g. `[NODEID]`).
     * When repeating a packet, the repeater node should append a comma,
       followed by its node ID to the Path (e.g.
-      `[SOURCEID,REPEATERID]`).
+      `[NODEID,REPEATERID]`).
 
 The canonical specification of the packet format can be found in the
 [formal grammar](grammar.ebnf).
