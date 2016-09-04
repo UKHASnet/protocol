@@ -34,7 +34,7 @@ windspeed   = "W", [ decimal ], [ ",", [ decimal ] ];
 location    = "L", ( ( [ decimal, ",", decimal ] ) | ","), [ ",", [ decimal ] ];
 zombie      = "Z", ( "0" | "1" );
 
-data field  = voltage | temperature | humidity | pressure | custom | sun |
+data field  = voltage | current | temperature | humidity | pressure | custom | sun |
               rssi | windspeed | location | count | zombie;
 
 data = { data field };
