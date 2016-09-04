@@ -15,8 +15,8 @@ grammar](grammar.ebnf).
 | Atmospheric Pressure | Pascals | P      | P101412       | |
 | Light         | (undefined)    | S      | S12           | |
 | Wind          | m/s, degrees   | W      | W15,355       | One or two elements (speed, bearing) |
-| RSSI          | dBmW           | R      | R-88          | RSSI of last received packet |
-| Zombie        | Boolean        | Z      | Z1            | Whether node is a "Zombie" (not acting as a repeater |
+| RSSI          | dBmW           | R      | R-88,-96      | One or two elements (RSSI of last received packet, receiver noise floor) |
+| Zombie        | Boolean        | Z      | Z1            | Whether node is a "Zombie" (not acting as a repeater) |
 | Location      | Degrees, meters | L     | L51.5,-1.3901 | Two or three elements (lat, long or lat, long, altitude) |
 | Packet Count  |                | C      | C16           | Number of packets received by node |
 | Comment       |                | :      | :this is a comment | All lowercase characters permitted except '[', ']' and '\|'|
