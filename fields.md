@@ -19,5 +19,5 @@ grammar](grammar.ebnf).
 | Zombie        | Boolean        | Z      | Z1            | Whether node is a "Zombie" (not acting as a repeater |
 | Location      | Degrees, meters | L     | L51.5,-1.3901 | Two or three elements (lat, long or lat, long, altitude) |
 | Packet Count  |                | C      | C16           | Number of packets received by node |
-| Comment       |                | :      | :this is a comment | All lowercase characters permitted except '[', ']' and '\|'|
 | Custom        |                | X      | X3,1,23       | Custom data |
+| Comment       |                | :      | :This is a comment | All characters permitted except '[', ']' and '\|'. Must be the last field. |
